@@ -1,0 +1,13 @@
+{% extends "portfolio/base.html"%}
+{% block content%}
+<h2>Maher has written {{ projects.count }} blog{{blogs.count|pluralize}}</h2>
+
+{% for x in blogs %}
+<Div>
+<a href="{% url 'blog:detail' x.id  %}"><h2>{{ x.blogtitle}}</h2></a>
+<h3>{{x.blogdate|date:"M dS Y"|upper }}</h3>
+<p>{{ x.blogmain|truncatechars:120 }}</p>
+<!--we cab add '|safe' before truncatechars to activate html tags in mainblog from admin inpute-->
+</Div>
+{% endfor %}
+{% endblock %}  
